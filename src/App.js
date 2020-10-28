@@ -35,7 +35,7 @@ const App = () => {
       };
 
       const response = await axios.post(
-        'https://twinvestigo-backend.herokuapp.com/api/search',
+        'https://twinvestigo-backend-aen2xlivgq-ew.a.run.app/api/search',
         parameters,
         { headers: { 'Access-Control-Allow-Origin': '*' } },
       );
