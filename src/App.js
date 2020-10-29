@@ -92,7 +92,6 @@ const App = () => {
         <Row>
           <Col xs={3}>
             <Container>
-              <h1>Tweets</h1>
               <Form>
                 <Form.Group>
                   <Form.Label>Username</Form.Label>
@@ -128,6 +127,9 @@ const App = () => {
                     onChange={handleCityChange}
                     value={city}
                   />
+                  <Form.Text className="text-muted">
+                    City where you want to search for tweets
+                  </Form.Text>
                 </Form.Group>
                 <Form.Group>
                   <Form.Check
@@ -154,7 +156,6 @@ const App = () => {
               <LoadingSpinner />
             ) : (
               <Container>
-                <h1>TweetList</h1>
                 {tweets.length > 0 ? (
                   tweets.map((tweet) => (
                     <Card className="my-2 p-4" key={tweet.id}>
@@ -162,7 +163,9 @@ const App = () => {
                     </Card>
                   ))
                 ) : (
-                  <h3>Make a search to see the results</h3>
+                  <h3 className="text-center">
+                    Make a search to see the results
+                  </h3>
                 )}
               </Container>
             )}
