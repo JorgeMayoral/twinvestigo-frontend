@@ -14,6 +14,7 @@ import {
 
 // My Components
 import Header from './components/Header';
+import AboutModal from './components/AboutModal';
 import Tweet from './components/Tweet';
 
 const App = () => {
@@ -25,6 +26,11 @@ const App = () => {
   const [searchText, setSearchText] = useState('');
   const [city, setCity] = useState('');
   const [olderTweets, setOlderTweets] = useState(false);
+
+  const [showAbout, setShowAbout] = useState(false);
+
+  const handleShowAbout = () => setShowAbout(true);
+  const handleCloseAbout = () => setShowAbout(false);
 
   const searchTweets = async () => {
     try {
@@ -86,7 +92,9 @@ const App = () => {
 
   return (
     <>
-      <Header />
+      <AboutModal showAbout={showAbout} closeAbout={() => handleCloseAbout()} />
+
+      <Header aboutButton={() => handleShowAbout()} />
       <Container className="mt-4">
         <Row>
           <Col xs={3}>
@@ -110,7 +118,7 @@ const App = () => {
                   <Form.Label>Text</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Username"
+                    placeholder="Text"
                     onChange={handleSearchTextChange}
                     value={searchText}
                   />
@@ -123,7 +131,7 @@ const App = () => {
                   <Form.Label>City</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Username"
+                    placeholder="City"
                     onChange={handleCityChange}
                     value={city}
                   />
