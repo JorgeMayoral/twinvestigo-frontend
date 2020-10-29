@@ -2,20 +2,13 @@ import { useState } from 'react';
 import axios from 'axios';
 
 // React Bootstrap
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  Spinner,
-  Card,
-} from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 
 // My Components
 import Header from './components/Header';
 import AboutModal from './components/AboutModal';
 import Tweet from './components/Tweet';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const App = () => {
   const [tweets, setTweets] = useState([]);
@@ -158,9 +151,7 @@ const App = () => {
           </Col>
           <Col xs={7}>
             {loading ? (
-              <Spinner animation="border" role="status" variant="primary">
-                <span className="sr-only">loading...</span>
-              </Spinner>
+              <LoadingSpinner />
             ) : (
               <Container>
                 <h1>TweetList</h1>
