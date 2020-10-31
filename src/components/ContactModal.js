@@ -1,14 +1,13 @@
 import { Modal, Button, ListGroup } from 'react-bootstrap';
 
-const AboutModal = ({ showAbout, closeAbout }) => {
+const ContactModal = ({ showContact, closeContact }) => {
   return (
-    <Modal show={showAbout} onHide={closeAbout}>
+    <Modal show={showContact} onHide={closeContact}>
       <Modal.Header closeButton>
-        <Modal.Title>About</Modal.Title>
+        <Modal.Title>Contact</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <h5>Web developed by Jorge Mayoral Álvarez</h5>
         <p>If you want to contact me you can do it in the following links:</p>
         <ListGroup>
           <ListGroup.Item>
@@ -55,7 +54,7 @@ const AboutModal = ({ showAbout, closeAbout }) => {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="primary" onClick={closeAbout}>
+        <Button variant="primary" onClick={closeContact}>
           Ok
         </Button>
       </Modal.Footer>
@@ -63,4 +62,4 @@ const AboutModal = ({ showAbout, closeAbout }) => {
   );
 };
 
-export default AboutModal;
+export default ContactModal;

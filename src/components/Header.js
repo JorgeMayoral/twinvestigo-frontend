@@ -1,7 +1,7 @@
 // React Bootstrap
 import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 
-const Header = ({ aboutButton }) => {
+const Header = ({ contactButton }) => {
   return (
     <Navbar
       bg="primary"
@@ -17,9 +17,9 @@ const Header = ({ aboutButton }) => {
             <Button
               variant="link"
               style={{ color: 'black' }}
-              onClick={aboutButton}
+              onClick={contactButton}
             >
-              About
+              Contact
             </Button>
           </Nav>
         </Navbar.Collapse>

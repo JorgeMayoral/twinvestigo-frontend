@@ -6,7 +6,7 @@ import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 
 // My Components
 import Header from './components/Header';
-import AboutModal from './components/AboutModal';
+import ContactModal from './components/ContactModal';
 import Tweet from './components/Tweet';
 import LoadingSpinner from './components/LoadingSpinner';
 
@@ -20,10 +20,10 @@ const App = () => {
   const [city, setCity] = useState('');
   const [olderTweets, setOlderTweets] = useState(false);
 
-  const [showAbout, setShowAbout] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
-  const handleShowAbout = () => setShowAbout(true);
-  const handleCloseAbout = () => setShowAbout(false);
+  const handleShowContact = () => setShowContact(true);
+  const handleCloseContact = () => setShowContact(false);
 
   const searchTweets = async () => {
     try {
@@ -85,9 +85,12 @@ const App = () => {
 
   return (
     <>
-      <AboutModal showAbout={showAbout} closeAbout={() => handleCloseAbout()} />
+      <ContactModal
+        showContact={showContact}
+        closeContact={() => handleCloseContact()}
+      />
 
-      <Header aboutButton={() => handleShowAbout()} />
+      <Header contactButton={() => handleShowContact()} />
       <Container className="mt-4">
         <Row>
           <Col xs={3}>
