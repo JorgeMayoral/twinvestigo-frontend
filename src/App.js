@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 // React Bootstrap
@@ -26,7 +26,7 @@ const App = () => {
   const handleShowForm = () => setShowForm(true);
   const handleCloseForm = () => setShowForm(false);
 
-  const searchTweets = async () => {
+  const searchTweets = useCallback(async () => {
     try {
       const request = {
         username: parameters.username,
@@ -52,7 +52,7 @@ const App = () => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [parameters]);
 
   const handleSearch = (params) => {
     setParameters(params);
@@ -64,7 +64,7 @@ const App = () => {
     if (parameters) {
       searchTweets();
     }
-  }, [parameters]);
+  }, [parameters, searchTweets]);
 
   return (
     <>
