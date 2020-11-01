@@ -31,7 +31,7 @@ const Tweet = ({ tweet }) => {
             href={`https://twitter.com/${tweet.username}/status/${tweet.conversation_id}`}
             target="_blank noreferrer"
           >
-            <i class="fas fa-link"></i>
+            <i className="fas fa-link"></i>
             Link to tweet
           </a>
         </Row>
