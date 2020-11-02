@@ -14,6 +14,14 @@ const Header = ({ contactButton }) => {
         <Navbar.Brand>Twinvestigo</Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
+            <a
+              href="https://jorgemayoral.com/twinvestigo"
+              target="_blank noreferrer"
+            >
+              <Button variant="link" style={{ color: 'black' }}>
+                About
+              </Button>
+            </a>
             <Button
               variant="link"
               style={{ color: 'black' }}

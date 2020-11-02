@@ -11,6 +11,16 @@ const ContactModal = ({ showContact, closeContact }) => {
         <p>If you want to contact me you can do it in the following links:</p>
         <ListGroup>
           <ListGroup.Item>
+            <i className="fas fa-link"></i>
+            <a
+              href="https://jorgemayoral.com"
+              target="_blank noreferrer"
+              className="ml-3"
+            >
+              Portfolio
+            </a>
+          </ListGroup.Item>
+          <ListGroup.Item>
             <i className="far fa-envelope"></i>
             <a
               href="mailto:y0rch.developer@gmail.com"

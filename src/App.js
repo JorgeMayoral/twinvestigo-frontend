@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 // React Bootstrap
-import { Container, Button, Card } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 
 // My Components
 import Header from './components/Header';
@@ -32,6 +32,8 @@ const App = () => {
         username: parameters.username,
         searchText: parameters.searchText,
         city: parameters.city,
+        since: parameters.since,
+        until: parameters.until,
       };
 
       setTweets([]);
@@ -93,9 +95,7 @@ const App = () => {
               Search Tweets
             </Button>
             {tweets.map((tweet) => (
-              <Card className="my-2 p-4" key={tweet.id}>
-                <Tweet tweet={tweet} />
-              </Card>
+              <Tweet tweet={tweet} key={tweet.id} />
             ))}
           </Container>
         )}

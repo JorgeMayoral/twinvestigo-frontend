@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 // React Bootstrap
 import { Modal, Button, Form } from 'react-bootstrap';
@@ -9,11 +9,15 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
   const [username, setUsername] = useState('');
   const [searchText, setSearchText] = useState('');
   const [city, setCity] = useState('');
+  const [since, setSince] = useState('');
+  const [until, setUntil] = useState('');
   const [olderTweets, setOlderTweets] = useState(false);
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleSearchTextChange = (e) => setSearchText(e.target.value);
   const handleCityChange = (e) => setCity(e.target.value);
+  const handleSinceChange = (e) => setSince(e.target.value);
+  const handleUntilChange = (e) => setUntil(e.target.value);
   const handleOlderTweetsChange = (e) => setOlderTweets(e.target.value);
 
   const cleanForm = () => {
@@ -21,6 +25,8 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
     setUsername('');
     setSearchText('');
     setCity('');
+    setSince('');
+    setUntil('');
     setOlderTweets(false);
   };
 
@@ -32,11 +38,15 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
   const handleClick = () => {
     if (username === '' && searchText === '' && city === '') {
       setFormError('ERROR: At least one of the fields should be filled!');
+    } else if (username !== '' && searchText !== '') {
+      setFormError('ERROR: Choose only username or text!');
     } else {
       const parameters = {
         username: username,
         searchText: searchText,
         city: city,
+        since: since,
+        until: until,
         olderTweets: olderTweets,
       };
       handleSearch(parameters);
@@ -55,7 +65,7 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
             <Form.Label>Username</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Username"
+              placeholder="_y0rch"
               value={username}
               onChange={handleUsernameChange}
             />
@@ -66,7 +76,7 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
             <Form.Label>Text</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Text"
+              placeholder="Twinvestigo"
               value={searchText}
               onChange={handleSearchTextChange}
             />
@@ -79,7 +89,7 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
             <Form.Label>City</Form.Label>
             <Form.Control
               type="text"
-              placeholder="City"
+              placeholder="Ciudad Real"
               value={city}
               onChange={handleCityChange}
             />
@@ -87,6 +97,33 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
               City where you want to search for tweets
             </Form.Text>
           </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Since</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="2020-01-31"
+              value={since}
+              onChange={handleSinceChange}
+            />
+            <Form.Text className="text-muted">
+              Date from which you want to search
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Until</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="2020-11-27"
+              value={until}
+              onChange={handleUntilChange}
+            />
+            <Form.Text className="text-muted">
+              Date until which you want to search
+            </Form.Text>
+          </Form.Group>
+
           <Form.Group>
             <Form.Check
               type="checkbox"
@@ -95,8 +132,13 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
               onChange={handleOlderTweetsChange}
             />
           </Form.Group>
+
           <h6 style={{ color: 'red' }}>{formError}</h6>
         </Form>
+        <p>
+          Right now you can't search tweets from a user that contains a text.
+          Choose only username or text.
+        </p>
         <Button className="float-left" variant="warning" onClick={cleanForm}>
           <i className="fas fa-trash mr-2"></i>
           Clean Form
