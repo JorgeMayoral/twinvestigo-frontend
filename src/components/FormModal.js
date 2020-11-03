@@ -39,7 +39,9 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
     if (username === '' && searchText === '' && city === '') {
       setFormError('ERROR: At least one of the fields should be filled!');
     } else if (username !== '' && searchText !== '') {
-      setFormError('ERROR: Choose only username or text!');
+      setFormError(
+        'ERROR: Choose either username OR text. \nWe are sorry, but right now we cannot search by username and text at the same time. Please, clear either the username box or the text box',
+      );
     } else {
       const parameters = {
         username: username,
@@ -60,6 +62,10 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
       </Modal.Header>
 
       <Modal.Body>
+        <p>
+          Right now you can't search tweets from a user that contains a text.
+          Choose only username or text.
+        </p>
         <Form>
           <Form.Group>
             <Form.Label>Username</Form.Label>
@@ -69,7 +75,10 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
               value={username}
               onChange={handleUsernameChange}
             />
-            <Form.Text className="text-muted">Username without "@"</Form.Text>
+            <Form.Text className="text-muted">
+              Username without "@". If you search by username, you cannot search
+              by text.
+            </Form.Text>
           </Form.Group>
 
           <Form.Group>
@@ -81,7 +90,8 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
               onChange={handleSearchTextChange}
             />
             <Form.Text className="text-muted">
-              Text you want to search
+              Text you want to search. If you search by text, you cannot search
+              by username.
             </Form.Text>
           </Form.Group>
 
@@ -135,10 +145,6 @@ const FormModal = ({ showForm, closeForm, handleSearch }) => {
 
           <h6 style={{ color: 'red' }}>{formError}</h6>
         </Form>
-        <p>
-          Right now you can't search tweets from a user that contains a text.
-          Choose only username or text.
-        </p>
         <Button className="float-left" variant="warning" onClick={cleanForm}>
           <i className="fas fa-trash mr-2"></i>
           Clean Form
